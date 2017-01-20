@@ -1,0 +1,12 @@
+{
+  "name": "djWeb",
+  "url" : "",
+  "license": "",
+  "tags": ["djWeb"],
+  "description": "Haxe library for creating simple html5 pages with pure code",
+  "version": "0.3.0",
+  "classPath": "src/",
+  "releasenote": "",
+  "contributors": ["JohnDimi"],
+  "dependencies": { }
+}
