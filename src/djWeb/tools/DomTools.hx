@@ -215,10 +215,10 @@ class DomTools
 	public function CSS_AddStyle(stylename:String, cssText:String)
 	{
 		// Removing a style:
-		//var styleElement = Helper.getElementOrID(stylename);
-		//if (styleElement != null) {
+		// var styleElement = Helper.getElementOrID(stylename);
+		// if (styleElement != null) {
 		// Browser.document.getElementsByTagName('head')[0].removeChild(styleElement);
-		//}
+		//
 		
 		var styleElement = newElement('style');
 		//styleElement.itemType = 'text/css';

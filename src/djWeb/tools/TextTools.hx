@@ -54,7 +54,7 @@ class TextTools
 	public function addStyle(id:String, s:TextStyle)
 	{
 		#if debug
-		if (textStyles.exists(id)) throw 'Textstyle with [$id] already exists';
+		if (textStyles.exists(id)){ trace('Error: Textstyle with [$id] already exists'); return; }
 		#end
 		textStyles.set(id, s);
 	}//---------------------------------------------------;
@@ -113,8 +113,8 @@ class TextTools
 //====================================================;
 
 typedef TextStyle = {
-	var color:String;
 	var size:Int;
+	@:optional var color:String;
 	@:optional var font:String;
 	@:optional var bgColor:String;
 	@:optional var shadow:String;

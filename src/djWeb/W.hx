@@ -7,8 +7,6 @@ import djWeb.tools.TextTools;
 /**
  * W (djWeb) Global object
  * Main static class object offering access to multiple components
- * ...
- * @author JohnDimi
  */
 @:expose("W") // Optional Debug
 class W
@@ -27,8 +25,7 @@ class W
 	// -- Pointer to the main top container
 	// -- WebMain sets this directly
 	public static var main:MainFrame;
-	
-	
+
 	// -- Text Tools
 	public static var text:TextTools;
 	

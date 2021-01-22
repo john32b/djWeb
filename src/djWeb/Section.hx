@@ -62,7 +62,7 @@ class Section
 	// public var next:Section;
 	
 	// -- ScrollAware
-	// If you create it before adding to the page, it's going to get added immediately
+	// If you create it before adding to the page, it's going to get added automatically
 	public var scrollAware:ScrollAware = null;
 	
 	//---------------------------------------------------;
@@ -82,8 +82,7 @@ class Section
 		style = Helper.defParams(style, defStyle);
 		
 		W.dom.qStyle(el, style);
-		
-		// scrollAware = new ScrollAware(el, true, true); /// debug <--- delete
+	
 		// NOTE: You should enable scrolltrack on the constructor
 
 	}//---------------------------------------------------;
@@ -111,15 +110,49 @@ class Section
 	/**
 	 * Create a strip background that expands horizontally to the window behind the section
 	 * Call this before adding the section to the page
-	 * e.g. createBGString("black");
+	 * e.g. createBG("black");
+	 * @param bgCSS Quickly add a background style
 	 */
 	public function createBGStrip(?bgCSS:String)
 	{
+		#if debug
+			if (bg != null) throw "BG already exists";
+		#end
+		
 		bg = W.dom.newElement('div');
 		bg.style.width = "100%";
 		bg.style.height = el.style.height;
 		bg.style.background = bgCSS;
 		bg.appendChild(el); // don't forget. PAGE will add (bg) instead of (el)
+	}//---------------------------------------------------;
+	
+	
+	/**
+	 * Quickly add something on the section
+	 * @param el Can be HtmlElement or an Object containing element (obj.el)
+	 */
+	function add(obj:Dynamic)
+	{
+		if (Std.is(obj, Element))
+		{
+			el.appendChild(obj);
+		}
+		else
+		if (Std.is(obj, String))
+		{
+			el.innerHTML += obj;
+		}
+		else
+		{
+			if (obj.el != null) 
+			{
+				#if debug // I don't need this extra check at release.
+				 if ( !Std.is(obj.el, Element) ) throw "Adding object.el is not of type Element";
+				#end
+				
+				el.appendChild(obj.el);
+			}
+		}
 	}//---------------------------------------------------;
 	
 	
